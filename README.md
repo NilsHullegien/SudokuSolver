@@ -4,3 +4,6 @@ The application will run on [http://localhost:3000](http://localhost:3000)
 
 ### Add a sudoku
 To add a sudoku for the solver and checker, please insert it into the input field, using one 81 character string with dots ('.') for empty cells.
+
+### Linting
+ESLint is added to this project, it can be executed with `yarn lint`.

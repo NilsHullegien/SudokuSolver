@@ -62,28 +62,31 @@ const MainPage = () => {
   }, [showModalWithMessage]);
 
   return (
-    <div className='content'>
-      <InfoToast open={isModalShown} setOpen={showModal} message={modalMessage as string} headerText={modalHeaderText}/>
-      <Board grid={sudoku}/>
-      <div className='content-grid'>
-        <div className='content-grid-left'>
-          <Form onSubmit={parseSudokuFromInput}>
-            <FormInput label='Insert new sudoku here (81 digits line with dots for empty cells)'
-              onChange={(e) => setUnparsedSudoku(e.target.value)}/>
-            <FormButton size='large' content="Submit" color='orange'/>
-          </Form>
-        </div>
-        <div className='content-grid-right'>
-          <Button size='large' disabled={isSudokuStillDefault()} onClick={solveSudoku} color='orange'>
+    <>
+      <h1 className='content-title'>Sudoku verifier and solver</h1>
+      <div className='content'>
+        <InfoToast open={isModalShown} setOpen={showModal}
+          message={modalMessage as string} headerText={modalHeaderText}/>
+        <Board grid={sudoku}/>
+        <div className='content-grid'>
+          <div className='content-grid-left'>
+            <Form onSubmit={parseSudokuFromInput}>
+              <FormInput label='Insert new sudoku here (81 digits line with dots for empty cells)'
+                onChange={(e) => setUnparsedSudoku(e.target.value)}/>
+              <FormButton size='large' content="Submit" color='orange'/>
+            </Form>
+          </div>
+          <div className='content-grid-right'>
+            <Button size='large' disabled={isSudokuStillDefault()} onClick={solveSudoku} color='orange'>
             Solve loaded sudoku
-          </Button>
-          <Button size='large' disabled={isSudokuStillDefault()} onClick={checkSudoku} color='orange'>
+            </Button>
+            <Button size='large' disabled={isSudokuStillDefault()} onClick={checkSudoku} color='orange'>
             Check loaded sudoku
-          </Button>
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
-
+    </>
   );
 };
 

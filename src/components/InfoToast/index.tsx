@@ -2,9 +2,9 @@ import {Button, Modal, ModalActions, ModalContent, ModalHeader} from 'semantic-u
 import React from 'react';
 import {InfoToastProps} from './types';
 
-const InfoToast = ({open, setOpen, message}: InfoToastProps) => {
-  return <Modal size={'tiny'} open={open}>
-    <ModalHeader>Error!</ModalHeader>
+const InfoToast = ({open, setOpen, message, headerText}: InfoToastProps) => {
+  return <Modal size={'tiny'} open={open} >
+    <ModalHeader>{headerText}</ModalHeader>
     <ModalContent>
       <p>{message}</p>
     </ModalContent>

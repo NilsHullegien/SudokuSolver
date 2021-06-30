@@ -2,7 +2,8 @@ import React from 'react';
 import InfoToast from '../../components/InfoToast';
 import Board from '../../components/Board';
 import {Button, ButtonGroup, Form, FormButton, FormInput} from 'semantic-ui-react';
-import {parseSudoku, unparsedContainsCorrectCharacters, validateBoxes, validateColumns, validateRows} from './util';
+import {parseSudoku, unparsedContainsCorrectCharacters} from './util';
+import {isValid, validateBoxes, validateColumns, validateRows} from './validate';
 
 const MainPage = () => {
   const defaultList = React.useMemo(() => {return [
@@ -48,13 +49,13 @@ const MainPage = () => {
   }, [sudoku, defaultList]);
 
   const checkSudoku = React.useCallback(() => {
-    return (validateRows(sudoku) && validateColumns(sudoku) && validateBoxes(sudoku)) ?
+    return (isValid(sudoku)) ?
       showModalWithMessage("Sudoku is valid!", "Congratulations!"):
       showModalWithMessage("Sudoku is invalid!");
-  }, [sudoku]);
+  }, [sudoku, showModalWithMessage]);
 
   const solveSudoku = React.useCallback(() => {
-    showModalWithMessage("Sudoku is valid!", "Congratulations!")
+    showModalWithMessage("Not yet implemented :)", "Warning")
   }, []);
 
   return (

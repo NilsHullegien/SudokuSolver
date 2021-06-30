@@ -2,7 +2,7 @@ import React from 'react';
 import InfoToast from '../../components/InfoToast';
 import Board from '../../components/Board';
 import {Button, ButtonGroup, Form, FormButton, FormInput} from 'semantic-ui-react';
-import {parseSudoku, unparsedContainsCorrectCharacters} from './util';
+import {parseSudoku, unparsedContainsCorrectSymbols} from './util';
 import {isValid} from './validate';
 
 const MainPage = () => {
@@ -14,17 +14,17 @@ const MainPage = () => {
     ];
   }, []);
 
-  const defaultModalHeaderText = 'An error has occurred';
+  const DEFAULT_MODAL_HEADER = 'An error has occurred';
 
   const [sudoku, setSudoku] = React.useState<number[][]>(defaultList);
   const [unparsedSudoku, setUnparsedSudoku] = React.useState<string>();
 
   const [isModalShown, showModal] = React.useState<boolean>(false);
   const [modalMessage, setModalMessage] = React.useState<string>();
-  const [modalHeaderText, setModalHeaderText] = React.useState<string>(defaultModalHeaderText);
+  const [modalHeaderText, setModalHeaderText] = React.useState<string>(DEFAULT_MODAL_HEADER);
 
   const showModalWithMessage = React.useCallback((message: string, modalHeaderText?: string) => {
-    setModalHeaderText(modalHeaderText ?? defaultModalHeaderText);
+    setModalHeaderText(modalHeaderText ?? DEFAULT_MODAL_HEADER);
     setModalMessage(message);
     showModal(true);
   }, [setModalMessage, showModal]);
@@ -39,7 +39,7 @@ const MainPage = () => {
       showModalWithMessage('This string does not have 81 digits to fill in, please check for spaces');
       return;
     }
-    if (!unparsedContainsCorrectCharacters(unparsedSudoku as string)) { // unparsedSudoku must be a string at this point
+    if (!unparsedContainsCorrectSymbols(unparsedSudoku as string)) { // unparsedSudoku must be a string at this point
       showModalWithMessage('Please check if you have filled only numbers and dots for the open spaces');
       return;
     }

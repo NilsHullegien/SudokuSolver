@@ -1,4 +1,9 @@
-export function unparsedContainsCorrectCharacters(unparsedSudoku: string): boolean {
+/**
+ * Check if the unparsed string only contains digits and dots.
+ * @param {string} unparsedSudoku
+ * @return {boolean} true when the unparsed string only contains correct symbols.
+ */
+export function unparsedContainsCorrectSymbols(unparsedSudoku: string): boolean {
   return /^[0-9.]*$/.test(unparsedSudoku as string);
 }
 

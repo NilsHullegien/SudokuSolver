@@ -9,7 +9,7 @@ const Board: (grid: GridType) => JSX.Element = (grid: GridType) => {
 
   useEffect(() => setData(grid.grid), [grid]);
 
-  return <Grid celled columns="equal">
+  return <Grid celled columns="equal" textAlign="center">
     {data.map((row, rowIdx) =>
       <GridRow key={rowIdx}>
         {row.map((val, colIdx) =>

@@ -1,9 +1,10 @@
 import React from 'react';
 import InfoToast from '../../components/InfoToast';
 import Board from '../../components/Board';
-import {Button, ButtonGroup, Form, FormButton, FormInput} from 'semantic-ui-react';
+import {Button, Form, FormButton, FormInput} from 'semantic-ui-react';
 import {parseSudoku, unparsedContainsCorrectSymbols} from './util';
 import {isValid} from './validate';
+import '../MainPage/styles.css';
 
 const MainPage = () => {
   const defaultList = React.useMemo(() => {
@@ -61,19 +62,27 @@ const MainPage = () => {
   }, [showModalWithMessage]);
 
   return (
-    <>
+    <div className='content'>
       <InfoToast open={isModalShown} setOpen={showModal} message={modalMessage as string} headerText={modalHeaderText}/>
       <Board grid={sudoku}/>
-      <Form onSubmit={parseSudokuFromInput}>
-        <FormInput label={'Insert new sudoku here (81 digits line with dots for empty cells)'}
-          onChange={(e) => setUnparsedSudoku(e.target.value)}/>
-        <FormButton content="Submit"/>
-      </Form>
-      <ButtonGroup>
-        <Button disabled={isSudokuStillDefault()} onClick={solveSudoku}>Solve loaded sudoku</Button>
-        <Button disabled={isSudokuStillDefault()} onClick={checkSudoku}>Check loaded sudoku</Button>
-      </ButtonGroup>
-    </>
+      <div className='content-grid'>
+        <div className='content-grid-left'>
+          <Form onSubmit={parseSudokuFromInput}>
+            <FormInput label='Insert new sudoku here (81 digits line with dots for empty cells)'
+              onChange={(e) => setUnparsedSudoku(e.target.value)}/>
+            <FormButton size='large' content="Submit" color='orange'/>
+          </Form>
+        </div>
+        <div className='content-grid-right'>
+          <Button size='large' disabled={isSudokuStillDefault()} onClick={solveSudoku} color='orange'>
+            Solve loaded sudoku
+          </Button>
+          <Button size='large' disabled={isSudokuStillDefault()} onClick={checkSudoku} color='orange'>
+            Check loaded sudoku
+          </Button>
+        </div>
+      </div>
+    </div>
 
   );
 };

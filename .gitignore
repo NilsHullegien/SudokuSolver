@@ -24,4 +24,4 @@ yarn-error.log*
 
 #Jetbrains
 .idea
-*.iml
+SudokuSolver.iml

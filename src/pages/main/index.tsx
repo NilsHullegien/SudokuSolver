@@ -56,7 +56,7 @@ const MainPage = () => {
 
   const solveSudoku = React.useCallback(() => {
     showModalWithMessage("Not yet implemented :)", "Warning")
-  }, []);
+  }, [showModalWithMessage]);
 
   return (
     <>

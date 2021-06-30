@@ -13,7 +13,7 @@ const InfoToast = ({open, setOpen, message, headerText}: InfoToastProps) => {
         Okay
       </Button>
     </ModalActions>
-  </Modal>
-}
+  </Modal>;
+};
 
 export default InfoToast;

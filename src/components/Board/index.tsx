@@ -4,22 +4,22 @@ import {GridType} from './types';
 import {Grid, GridColumn, GridRow} from 'semantic-ui-react';
 import Cell from '../Cell';
 
-const Board: (grid: GridType) => JSX.Element = ({grid}) => {
+const Board: (grid: GridType) => JSX.Element = (grid: GridType) => {
   const [data, setData] = React.useState<number[][]>([[]]);
 
-  useEffect(() => setData(grid), [grid]);
+  useEffect(() => setData(grid.grid), [grid]);
 
   return <Grid celled columns="equal">
-    {data.map(row =>
-      <GridRow>
-        {row.map(val =>
-          <GridColumn>
+    {data.map((row, rowIdx) =>
+      <GridRow key={rowIdx}>
+        {row.map((val, colIdx) =>
+          <GridColumn key={colIdx}>
             <Cell value={val}/>
-          </GridColumn>
+          </GridColumn>,
         )}
-      </GridRow>
+      </GridRow>,
     )}
   </Grid>;
-}
+};
 
 export default Board;

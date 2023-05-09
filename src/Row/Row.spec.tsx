@@ -38,4 +38,15 @@ describe('Row', () => {
         const row = new Row(getCompletedRow());
         expect(row.isSolved()).to.be.true;
     })
+
+    it('returns the string representation of a row', () => {
+        const completedRow = new Row(getCompletedRow());
+        expect(completedRow.toString()).to.equal('["[1]","[2]","[3]","[4]","[5]","[6]","[7]","[8]","[9]"]');
+
+        const defaultRow = new Row(getDefaultRow());
+        expect(defaultRow.toString()).to.equal(
+            '["[1,2,3,4,5,6,7,8,9]","[1,2,3,4,5,6,7,8,9]","[1,2,3,4,5,6,7,8,9]",' +
+            '"[1,2,3,4,5,6,7,8,9]","[1,2,3,4,5,6,7,8,9]","[1,2,3,4,5,6,7,8,9]",' +
+            '"[1,2,3,4,5,6,7,8,9]","[1,2,3,4,5,6,7,8,9]","[1,2,3,4,5,6,7,8,9]"]');
+    })
 });

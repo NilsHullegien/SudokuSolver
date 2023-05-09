@@ -16,4 +16,9 @@ export class Cell {
         }
         return this.possibleValues[0];
     }
+
+    public toString(): string {
+        return JSON.stringify(this.possibleValues);
+    }
+
 }

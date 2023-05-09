@@ -32,4 +32,9 @@ describe('Cell', () => {
         const cell = new Cell([1, 2]);
         expect(cell.getValue()).to.be.null;
     })
+
+    it('returns the string representation of a cell', () => {
+        const cell = new Cell([1, 2]);
+        expect(cell.toString()).to.equal('[1,2]');
+    })
 })

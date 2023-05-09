@@ -21,4 +21,8 @@ export class Row {
         return this.cells.map(cell => cell.getValue())
             .every((val, idx) => val === getCompletedRow()[idx]);
     }
+
+    public toString(): string {
+        return JSON.stringify(this.cells.map(el => el.toString()));
+    }
 }

@@ -1,9 +1,9 @@
-import {Cell} from "../Cell/Cell.tsx";
-import {getCompletedRow} from "../util.ts";
+import {getCompletedSetOfNine} from "../util.ts";
+import {SetOfNineCellType} from "../types.ts";
 
-export type RowPropType = [Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell];
-export class Row {
-    constructor(public cells: RowPropType) {}
+export class SetOfNine {
+    constructor(public cells: SetOfNineCellType) {}
+
 
     public values() {
         return this.cells;
@@ -19,7 +19,7 @@ export class Row {
         }
 
         return this.cells.map(cell => cell.getValue())
-            .every((val, idx) => val === getCompletedRow()[idx]);
+            .every((val, idx) => val === getCompletedSetOfNine()[idx]);
     }
 
     public toString(): string {

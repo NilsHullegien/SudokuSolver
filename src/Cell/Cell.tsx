@@ -1,7 +1,7 @@
-import {getCompletedRow} from "../util.ts";
+import {getCompletedSetOfNine} from "../util.ts";
 
 export class Cell {
-    constructor(public possibleValues: number[] = getCompletedRow()) {}
+    constructor(private possibleValues: number[] = getCompletedSetOfNine()) {}
     public values(): number[] {
         return this.possibleValues;
     }

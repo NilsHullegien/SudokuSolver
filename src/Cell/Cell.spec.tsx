@@ -1,9 +1,9 @@
 import {describe, expect, it} from "vitest";
 import {Cell} from "./Cell.tsx";
-import {getCompletedRow} from "../util.ts";
+import {getCompletedSetOfNine} from "../util.ts";
 
 describe('Cell', () => {
-    const defaultSet = getCompletedRow();
+    const defaultSet = getCompletedSetOfNine();
     it('creates a cell which contains the numbers 1-9 when no input is given', () => {
         const cell = new Cell();
         expect(cell.values()).to.deep.equal(defaultSet)
